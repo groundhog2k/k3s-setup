@@ -1,0 +1,20 @@
+fullnameOverride: kubernetes-dashboard
+
+metricsScraper:
+  enabled: true
+
+extraArgs:
+  - --enable-insecure-login
+  - --enable-skip-login
+
+ingress:
+  enabled: true
+  hosts:
+    - "k8sdash"
+  annotations:
+    cert-manager.io/cluster-issuer: local-ca
+
+  tls:
+    - hosts:
+        - "k8sdash"
+      secretName: k8sdash

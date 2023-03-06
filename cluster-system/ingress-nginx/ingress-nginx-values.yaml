@@ -1,0 +1,4 @@
+fullnameOverride: ingress-nginx
+
+controller:
+  watchIngressWithoutClass: true
