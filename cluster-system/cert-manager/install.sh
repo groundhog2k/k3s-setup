@@ -3,7 +3,7 @@ echo ">>>>> Installing Jetstack cert-manager"
 helm repo add jetstack https://charts.jetstack.io --force-update
 if [ ! -f certs/tls.crt ] || [ ! -f certs/tls.key ]; then
   echo "Generating new self-signed root certificate"
-  openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 \
+  openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 \
     -subj "/C=DE/ST=Berlin/L=Berlin/CN=LocalDeveloperRootCA" \
     -keyout certs/tls.key -out certs/tls.crt
 fi
