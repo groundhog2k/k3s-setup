@@ -2,17 +2,26 @@
 
 ## What is it good for?
 
-This project will make it very easy to automatically setup a K3s based Kubernetes environment on your local development machine.
+This project will make it very easy to automatically setup a K3s based Kubernetes environment on your local development machine with metrics, certificate manager, ingress controller and dashboard.
 
 It supports native Linux and also a WSL2 based setup.
-There is no more need to use Docker for Desktop on Windows which makes it ideal for Corporate environments.
+There is no more need to use Docker for Desktop on Windows which makes it ideal for Corporate environments to save of license costs.
+
+The setup was tested for following environments:
+
+- Ubuntu Linux 22.04
+- Debian 11
+- Ubuntu Linux 22.04 for WSL2 (MS Windows 10 / 11)
+- Debian 11 for WSL2 (MS Windows 10 / 11)
 
 ## How to start? (TL;DR)
 
 ### Requirements
 
 * Make sure your Linux or WSL2 environment has access to the Internet (directly or via properly configured HTTP/HTTPS proxy)
+* Your WSL2 distro must have [systemd support](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#set-the-systemd-flag-set-in-your-wsl-distro-settings) enabled
 * Make sure you have `sudo` permissions
+* You need to have `curl` and [helm installed](https://helm.sh/docs/intro/install/) in your Linux environment
 
 ### Really..I want to start it now
 
@@ -40,7 +49,37 @@ To configure the correct KUBECONFIG in Linux/WSL2 do:
 export KUBECONFIG=~/.kube/k3s.yaml
 ```
 
-## What will it do?
+## How to stop or (re)-start?
+
+You can stop the installed k3s with:
+
+```
+k3s-killall.sh
+```
+
+...and start it again with:
+
+```
+sudo service k3s start
+```
+
+## How to uninstall?
+
+Uninstall everything related to k3s with a simple:
+
+```
+k3s-uninstall.sh
+```
+
+If you want to uninstall nginx too (WSL2 only):
+
+```
+sudo apt remove nginx
+```
+
+---
+
+## Give me the details
 
 ### For Linux
 
@@ -50,9 +89,7 @@ For Linux it will simply install K3s and prepare a few more services like, metri
 
 In WSL2 it will spin up K3s inside the WSL environment, deploy the same services like on the Linux environment and expose the Ingress nginx HTTPS port (443) to the host machine using Nginx as a reverse proxy.
 
----
-
-## Give me more details
+### All the scripts in detail
 
 The script `k3s-setup.sh` builds the bracket around a few other scripts.
 It will call the following sub-scripts:
