@@ -18,12 +18,12 @@ The setup was tested for following environments:
 
 ### Requirements
 
-* Make sure your Linux or WSL2 environment has access to the Internet (directly or via properly configured HTTP/HTTPS proxy)
-* Your WSL2 distro must have [systemd support](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#set-the-systemd-flag-set-in-your-wsl-distro-settings) enabled
-* Make sure you have `sudo` permissions
-* You need to have `curl` and [helm installed](https://helm.sh/docs/intro/install/) in your Linux environment
+- Make sure your Linux or WSL2 environment has access to the Internet (directly or via properly configured HTTP/HTTPS proxy)
+- Your WSL2 distro must have [systemd support](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#set-the-systemd-flag-set-in-your-wsl-distro-settings) enabled
+- Make sure you have `sudo` permissions
+- You need to have `curl` and [helm installed](https://helm.sh/docs/intro/install/) in your Linux environment
 
-### Really..I want to start it now
+### Really.. I want to start it now
 
 ```bash
 git clone https://github.com/groundhog2k/k3s-setup.git
@@ -33,7 +33,7 @@ cd k3s-setup
 
 Install the self-signed root certificate that was generated in `./cluster-system/cert-manager/certs/tls.crt` into your local browser or computer truststore for root certificates.
 
-When setup is finished and all services are running open https://k8sdash in your browser and enjoy Kubernetes.
+When setup is finished and all services are running open [https://k8sdash](https://k8sdash) in your browser and enjoy Kubernetes.
 
 **Important - For Windows only:**
 
@@ -53,13 +53,13 @@ export KUBECONFIG=~/.kube/k3s.yaml
 
 You can stop the installed k3s with:
 
-```
+```bash
 k3s-killall.sh
 ```
 
 ...and start it again with:
 
-```
+```bash
 sudo service k3s start
 ```
 
@@ -67,13 +67,13 @@ sudo service k3s start
 
 Uninstall everything related to k3s with a simple:
 
-```
+```bash
 k3s-uninstall.sh
 ```
 
 If you want to uninstall nginx too (WSL2 only):
 
-```
+```bash
 sudo apt remove nginx
 ```
 
@@ -121,7 +121,7 @@ It will call the following sub-scripts:
 
       This scripts deploys the [Kubernetes dashboard](https://github.com/kubernetes/dashboard) management UI from the original helm chart.
 
-      Together with the Ingress component from previous step the UI should appear for the local URI https://k8sdash
+      Together with the Ingress component from previous step the UI should appear for the local URI [https://k8sdash](https://k8sdash)
 
       **Important:**
 
